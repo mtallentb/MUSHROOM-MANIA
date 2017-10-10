@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mushroom Mania</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body ng-app="MushroomApp">
+    <div ng-controller="MushroomCtrl">
+        <input type="text" ng-model="searchString" /><br>
+        <input type="radio" value="1" name="shroom" ng-click= /> Poisonous<br>
+        <input type="radio" value="2" name="shroom" /> Non-Poisonous<br>
+
+        <div ng-repeat="shroom in shroomArr | searchFor:searchString">
+            <div ng-if="shroom.edible">
+                <h4>{{shroom.name}}</h4>
+                <p>{{shroom.description}}</p>
+            </div>
+            <div ng-if="!shroom.edible">
+                <h4>{{shroom.name}}</h4>
+                <p>{{shroom.description}}</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div ng-view></div> -->
+
+    <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./lib/node_modules/angular/angular.min.js"></script>
+    <script src="./lib/node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./app/app.js"></script>
+    <script src="./app/factories/MushroomFactory.js"></script>
+    <script src="./app/controllers/MushroomCtrl.js"></script>
+</body>
+</html>
